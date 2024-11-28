@@ -1,0 +1,33 @@
+.searchBar {
+  display: flex;
+  gap: 3px;
+  width: 50%;
+}
+
+.inputBtn {
+  background-color: rgb(32, 43, 59);
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 27px;
+  width: 40px;
+}
+
+.inputText {
+  border: 0px;
+  background-color: rgb(32, 43, 59);
+  height: 25px;
+  border-radius: 5px;
+  color: aliceblue;
+  width: 100%;
+}
+
+.inputText:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.searchBar svg {
+  margin-bottom: -1px;
+  width: 15px;
+}

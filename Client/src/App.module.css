@@ -1,0 +1,32 @@
+body {
+  margin: 0px;
+  font-family: Quicksand;
+  background-color: rgb(11, 19, 30);
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10%;
+  width: 100%;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  color: aliceblue;
+}
+
+.pageContent {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) 0.1fr;
+  grid-template-rows: repeat(6, 1fr) 0.1fr;
+  grid-gap: 15px;
+  margin: 5px;
+}
+
+svg {
+  fill: gray;
+}

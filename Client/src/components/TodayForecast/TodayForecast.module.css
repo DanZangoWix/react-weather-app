@@ -1,0 +1,43 @@
+.todayForecast {
+  grid-column: 2 / 5;
+  grid-row: 4 / 6;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(32, 43, 59);
+  padding: 0px;
+  margin: 0px;
+}
+
+.todayForecast h5 {
+  color: aliceblue;
+}
+
+.todayForecastHeader {
+  color: aliceblue;
+  padding: 5% 0px 0px 2%;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+.hourForecastList {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0px;
+  padding: 0px;
+}
+
+.hourForecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13%;
+  margin: 0px;
+  color: rgb(200, 199, 199);
+}
+
+.hourForecast p {
+  font-size: 100%;
+  font-weight: bold;
+}

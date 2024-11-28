@@ -1,0 +1,45 @@
+.citiesMenuContainer {
+  grid-column: 1 / 1;
+  grid-row: 1 / 6;
+  background-color: rgb(32, 43, 59);
+  color: aliceblue;
+  border-radius: 10px;
+}
+
+.citiesMenu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0%;
+}
+
+.citiesMenu li {
+  text-align: center;
+  padding: 4% 0px;
+  border-radius: 5px;
+}
+
+.cityOption:hover {
+  background-color: beige;
+  color: black;
+  cursor: pointer;
+}
+
+.cityOption {
+  position: relative;
+}
+
+.cityOption svg {
+  display: none;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  fill: rgb(11, 19, 30);
+}
+
+.cityOption:hover svg {
+  display: inline;
+}

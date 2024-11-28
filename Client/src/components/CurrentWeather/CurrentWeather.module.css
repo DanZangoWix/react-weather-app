@@ -1,0 +1,34 @@
+.currentWeather {
+  grid-column: 2 / 5;
+  grid-row: 1 / 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 8%;
+  border-radius: 10px;
+  background-image: url(./assets/sunny-background.jpg);
+  background-size: cover;
+  color: rgb(5, 2, 2);
+}
+
+.currentData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentData h1 {
+  margin: 0px;
+}
+
+.currentTemp {
+  margin: 20px 0px 0px 0px;
+  font-size: 50px;
+}
+
+.currentWeather img {
+  width: 100px;
+  height: 110px;
+  fill: black;
+}
