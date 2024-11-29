@@ -1,0 +1,9 @@
+{
+  "defaultCity": {
+    "city": "Tel Aviv-Yafo",
+    "country": "Israel",
+    "url": ""
+  },
+  "defaultMode": "dark",
+  "defaultDegree": "c"
+}

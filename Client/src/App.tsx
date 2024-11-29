@@ -8,41 +8,53 @@ import TodayForecast from "./components/TodayForecast/TodayForecast";
 import WeeklyForecast from "./components/WeeklyForecast/WeeklyForecast";
 import InfoBoxes from "./components/InfoBoxes/InfoBoxes";
 import * as types from "./assets/types";
+import defaultSettingsJson from "./assets/defaultSettings.json";
+import SettingsButton from "./components/SettingsButton/SettingsButton";
+import { writeFileSync } from "fs";
 
 function App() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [cityList, setCityList] = useState(["Tel Aviv", "New York", "Paris"]);
-  const [city, setCity] = useState("Tel Aviv");
+  const [defaultSettings, setDefaultSettings] =
+    useState<types.defaultSettings>(defaultSettingsJson);
+
+  const [cityList, setCityList] = useState([defaultSettings.defaultCity]);
+  const [currentCity, setcurrentCity] = useState(defaultSettings.defaultCity);
   const [weatherData, setWeatherData] = useState<types.weatherData | null>(
     null
   );
-  // const defaultCity = "Tel Aviv";
 
   useEffect(() => {
     const getWeatherObject = async () => {
-      await axios
-        .get(`http://localhost:3001/${city}`)
-        .then((response) => {
-          setWeatherData(response.data);
-        })
-        .catch((error) => {
-          console.log("ERROR: city not found");
-        });
+      try {
+        const searchCityBy = currentCity.url
+          ? currentCity.url
+          : currentCity.city;
+        const response = await axios.get(
+          `http://localhost:3001/${searchCityBy}`
+        );
+        setWeatherData(response.data);
+      } catch (error) {
+        console.error("ERROR: city not found");
+      }
     };
     getWeatherObject();
-  }, [city]);
+  }, [currentCity]);
 
   return (
     <div className={styles.App}>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <div className={styles.siteHeadline}>
           <h1>Weather.com</h1>
         </div>
-        <SearchBar setCity={setCity} setCityList={setCityList} />
-      </div>
+        <SearchBar
+          setcurrentCity={setcurrentCity}
+          setCityList={setCityList}
+          cityList={cityList}
+        />
+        <SettingsButton />
+      </header>
 
-      <div className={styles.pageContent}>
-        <CityMenu cityList={cityList} setCity={setCity} />
+      <main className={styles.pageContent}>
+        <CityMenu cityList={cityList} setcurrentCity={setcurrentCity} />
         {weatherData && (
           <>
             <CurrentWeather
@@ -53,7 +65,7 @@ function App() {
             <InfoBoxes infoData={weatherData.infoDataObj} />
           </>
         )}
-      </div>
+      </main>
     </div>
   );
 }

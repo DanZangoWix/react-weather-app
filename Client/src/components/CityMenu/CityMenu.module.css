@@ -43,3 +43,8 @@
 .cityOption:hover svg {
   display: inline;
 }
+
+.cityNameDisplay {
+  font-size: 20px;
+  font-weight: bold;
+}

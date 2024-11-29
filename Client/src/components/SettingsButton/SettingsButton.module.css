@@ -1,0 +1,18 @@
+.settingsContainer {
+  position: absolute;
+  right: 10%;
+  top: 18%;
+  padding: 0.5% 1%;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.settingsIcon {
+  width: 90%;
+  transition: all 0.3s ease;
+}
+
+.settingsIcon:hover {
+  cursor: pointer;
+  scale: 1.15;
+}

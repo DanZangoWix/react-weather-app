@@ -7,7 +7,7 @@ export default function CurrentWeather(props: {
   return (
     <div className={styles.currentWeather}>
       <div className={styles.currentData}>
-        <h1 className="currentCity">{props.currentWeather.cityName}</h1>
+        <h1 className="currentCity">{props.currentWeather.cityObj.city}</h1>
         <p>
           {" "}
           Feels Like:{" "}

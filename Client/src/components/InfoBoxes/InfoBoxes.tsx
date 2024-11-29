@@ -10,14 +10,13 @@ type InfoBox = {
 export default function InfoBoxes(props: { infoData: infoData }) {
   const infoBoxes: InfoBox[] = [
     { name: "Humidity", class: "humidity", scale: "%" },
-    { name: "Wind Speed", class: "wind_kph", scale: "kmp" },
+    { name: "Wind Speed", class: "windKph", scale: "kmp" },
     { name: "UV", class: "uv", scale: "%" },
     { name: "Rain Chances", class: "chanceOfRain", scale: "%" },
     { name: "Sunrise", class: "sunrise", scale: "" },
     { name: "Sunset", class: "sunset", scale: "" },
     { name: "Visibility", class: "visibility", scale: "km" },
   ];
-
   return (
     <>
       {infoBoxes.map((box: InfoBox, index: number) => (
@@ -27,7 +26,7 @@ export default function InfoBoxes(props: { infoData: infoData }) {
             <span className={styles.infoData}>
               {props.infoData[`${box.class}`]}
             </span>
-            {box.scale}
+            {` ${box.scale}`}
           </p>
         </div>
       ))}

@@ -1,9 +1,3 @@
-export type cityObj = {
-  city: string;
-  country: string;
-  url?: string;
-};
-
 export type minMaxTemp = {
   minTemp: number;
   maxTemp: number;
@@ -49,8 +43,8 @@ export type weatherData = {
   infoDataObj: infoData;
 };
 
-export type defaultSettings = {
-  defaultCity: cityObj;
-  defaultMode: string;
-  defaultDegree: string;
+export type cityObj = {
+  city: string;
+  country: string;
+  url?: string;
 };

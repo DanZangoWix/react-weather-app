@@ -1,3 +1,5 @@
+import * as types from "./assets/types";
+
 type minMaxTemp = {
   minTemp: number;
   maxTemp: number;
@@ -12,7 +14,7 @@ export default async function createJson(cityName: string) {
 
   // current weather data
   type currentWeatherData = {
-    cityName: string;
+    cityObj: types.cityObj;
     feelsLikeC: number;
     feelsLikeF: number;
     currTempC: number;
@@ -25,8 +27,13 @@ export default async function createJson(cityName: string) {
   const currTempC = cityData.current.temp_c;
   const currTempF = cityData.current.temp_f;
   const currentIcon = cityData.current.condition.icon;
-  const currentWeatherDataObj = {
-    cityName,
+  const cityObj = {
+    city: cityData.location.name,
+    country: cityData.location.country,
+    url: undefined,
+  };
+  const currentWeatherDataObj: currentWeatherData = {
+    cityObj,
     feelsLikeC,
     feelsLikeF,
     currTempC,

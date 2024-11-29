@@ -29,8 +29,9 @@ app.get("/complete/:prefix", async (req, res) => {
     cityOptions.length
       ? cityOptions.map((city: any) => {
           return {
-            cityName: city.name,
+            city: city.name,
             country: city.country,
+            url: city.url,
           };
         })
       : []

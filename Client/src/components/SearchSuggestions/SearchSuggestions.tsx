@@ -1,8 +1,9 @@
 import styles from "./SearchSuggestions.module.css";
+import * as types from "../../assets/types";
 
 export default function SearchSuggestions(props: {
-  cityOptions: { cityName: string; country: string }[];
-  handleSearch: (city: string) => void;
+  cityOptions: types.cityObj[];
+  handleSearch: (city: types.cityObj) => void;
 }) {
   return (
     <div
@@ -13,29 +14,26 @@ export default function SearchSuggestions(props: {
       }`}>
       <ul className={styles.suggestionList}>
         {props.cityOptions.length ? (
-          props.cityOptions.map(
-            (
-              cityOption: { cityName: string; country: string },
-              index: number
-            ) => {
-              return (
-                <li
-                  key={index}
-                  className={styles.suggestion}
-                  onClick={() => props.handleSearch(cityOption.cityName)}>
-                  <div className={styles.suggestionContainer}>
-                    <span className={styles.optionCityName}>
-                      {cityOption.cityName}
-                    </span>
-                    <br />
-                    <span className={styles.optionCountryName}>
-                      {cityOption.country}
-                    </span>
-                  </div>
-                </li>
-              );
-            }
-          )
+          props.cityOptions.map((cityOption: types.cityObj, index: number) => {
+            return (
+              <li
+                key={index}
+                className={styles.suggestion}
+                onClick={() => {
+                  props.handleSearch(cityOption);
+                }}>
+                <div className={styles.suggestionContainer}>
+                  <span className={styles.optionCityName}>
+                    {cityOption.city}
+                  </span>
+                  <br />
+                  <span className={styles.optionCountryName}>
+                    {cityOption.country}
+                  </span>
+                </div>
+              </li>
+            );
+          })
         ) : (
           <></>
         )}

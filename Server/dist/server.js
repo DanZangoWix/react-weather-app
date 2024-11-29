@@ -30,8 +30,9 @@ app.get("/complete/:prefix", (req, res) => __awaiter(void 0, void 0, void 0, fun
     res.send(cityOptions.length
         ? cityOptions.map((city) => {
             return {
-                cityName: city.name,
+                city: city.name,
                 country: city.country,
+                url: city.url,
             };
         })
         : []);

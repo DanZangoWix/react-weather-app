@@ -6,7 +6,7 @@
   align-items: center;
   padding: 1% 8%;
   border-radius: 10px;
-  background-image: url(./assets/sunny-background.jpg);
+  background-image: url(./assets/cloudy-background.jpg);
   background-size: cover;
   color: rgb(5, 2, 2);
 }
@@ -15,7 +15,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .currentData h1 {

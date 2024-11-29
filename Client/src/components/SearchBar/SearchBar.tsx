@@ -3,21 +3,33 @@ import styles from "./SearchBar.module.css";
 import SearchSvg from "./assets/SearchSvg";
 import SearchSuggestions from "../SearchSuggestions/SearchSuggestions";
 import axios from "axios";
+import { cityObj } from "../../assets/types";
 
 export default function SearchBar(props: {
-  setCity: (city: string) => void;
-  setCityList: React.Dispatch<React.SetStateAction<string[]>>;
+  setcurrentCity: (city: cityObj) => void;
+  setCityList: React.Dispatch<React.SetStateAction<cityObj[]>>;
+  cityList: cityObj[];
 }) {
   const [searchInput, setSearchInput] = useState("");
-  const [cityOptions, setCityOptions] = useState([]);
+  const [cityOptions, setCityOptions] = useState<cityObj[]>([]);
 
-  const handleSearch = (cityToSearch: string) => {
-    props.setCity(cityToSearch);
-    props.setCityList((prevCityList: string[]) => [
-      ...prevCityList,
-      cityToSearch,
-    ]);
+  const handleSearch = (cityToSearch: cityObj) => {
+    props.setcurrentCity(cityToSearch);
+
+    if (
+      !props.cityList.some(
+        (city: cityObj) =>
+          city.city === cityToSearch.city &&
+          city.country === cityToSearch.country
+      )
+    ) {
+      props.setCityList((prevCityList: cityObj[]) => [
+        ...prevCityList,
+        cityToSearch,
+      ]);
+    }
     setCityOptions([]);
+    setSearchInput("");
   };
 
   const handleChange = async (value: string) => {
@@ -48,7 +60,7 @@ export default function SearchBar(props: {
         type="submit"
         value=""
         className={styles.inputBtn}
-        onClick={() => handleSearch(searchInput)}>
+        onClick={() => handleSearch({ city: searchInput, country: "" })}>
         <SearchSvg />
       </button>
       <SearchSuggestions

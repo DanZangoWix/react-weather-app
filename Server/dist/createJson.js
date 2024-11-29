@@ -15,8 +15,13 @@ export default function createJson(cityName) {
         const currTempC = cityData.current.temp_c;
         const currTempF = cityData.current.temp_f;
         const currentIcon = cityData.current.condition.icon;
+        const cityObj = {
+            city: cityData.location.name,
+            country: cityData.location.country,
+            url: undefined,
+        };
         const currentWeatherDataObj = {
-            cityName,
+            cityObj,
             feelsLikeC,
             feelsLikeF,
             currTempC,
