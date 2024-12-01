@@ -1,0 +1,42 @@
+.loading {
+  background-color: rgb(11, 19, 30);
+  width: 100vw;
+  height: 100vh;
+}
+
+.loading.light {
+  background-color: rgb(173, 216, 212);
+}
+
+.dot {
+  position: fixed;
+  top: 50%;
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 15px;
+  float: left;
+  list-style-type: none;
+}
+
+.dot:nth-child(1) {
+  animation: scale 1s linear infinite;
+  left: 40%;
+}
+
+.dot:nth-child(2) {
+  animation: scale 1s linear 0.1s infinite;
+  left: 45%;
+}
+
+.dot:nth-child(3) {
+  animation: scale 1s linear 0.2s infinite;
+  left: 50%;
+}
+
+@keyframes scale {
+  25% {
+    transform: scale(1.5);
+  }
+}

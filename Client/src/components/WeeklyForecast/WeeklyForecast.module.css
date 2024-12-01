@@ -1,16 +1,24 @@
 .weeklyForecast {
   grid-column: 5 / 7;
   grid-row: 1/ 4;
-  background-color: rgb(32, 43, 59);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: rgb(32, 43, 59);
+  color: rgb(200, 199, 199);
+  font-weight: bold;
 }
 
 .weeklyForecast h5 {
   color: aliceblue;
   margin: 0% 8%;
+}
+
+.weeklyForecast.light,
+.weeklyForecast.light h5 {
+  background-color: beige;
+  color: black;
 }
 
 .weeklyForecastList {
@@ -29,20 +37,11 @@
   justify-content: space-between;
 }
 
-.weekdayForecast svg {
-  width: 15%;
-}
-
 .weekdayForecast {
   display: flex;
   justify-content: space-between;
-  color: white;
 }
 
 .weekdayForecast p {
   width: 24%;
-}
-
-.tempRange {
-  color: rgb(200, 199, 199);
 }

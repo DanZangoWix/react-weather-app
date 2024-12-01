@@ -1,9 +1,13 @@
 import styles from "./CurrentWeather.module.css";
 import { currentWeatherData } from "../../assets/types";
+import { useContext } from "react";
+import { SettingsContext } from "../../assets/SettingsContext/settingsContext";
 
 export default function CurrentWeather(props: {
   currentWeather: currentWeatherData;
 }) {
+  const { defaultDegree } = useContext(SettingsContext);
+
   return (
     <div className={styles.currentWeather}>
       <div className={styles.currentData}>
@@ -12,12 +16,22 @@ export default function CurrentWeather(props: {
           {" "}
           Feels Like:{" "}
           <span className="feelsLikeTemp">
-            {props.currentWeather.feelsLikeC}
+            {`${
+              defaultDegree === "C"
+                ? props.currentWeather.feelsLikeC
+                : props.currentWeather.feelsLikeF
+            }° ${defaultDegree}`}
           </span>
-          °
         </p>
         <p className={styles.currentTemp}>
-          <span> {props.currentWeather.currTempC}</span>°
+          <span>
+            {" "}
+            {`${
+              defaultDegree === "C"
+                ? props.currentWeather.currTempC
+                : props.currentWeather.currTempF
+            }° ${defaultDegree}`}
+          </span>
         </p>
       </div>
       <img src={props.currentWeather.currentIcon} alt="current weather icon" />

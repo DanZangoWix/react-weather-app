@@ -5,7 +5,7 @@
 /Client/node_modules
 /.pnp
 .pnp.js
-
+/Client/yarn.lock
 # testing
 /coverage
 

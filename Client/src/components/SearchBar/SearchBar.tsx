@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./SearchBar.module.css";
 import SearchSvg from "./assets/SearchSvg";
 import SearchSuggestions from "../SearchSuggestions/SearchSuggestions";
 import axios from "axios";
 import { cityObj } from "../../assets/types";
+import SettingsButton from "../SettingsButton/SettingsButton";
+import { SettingsContext } from "../../assets/SettingsContext/settingsContext";
 
 export default function SearchBar(props: {
   setcurrentCity: (city: cityObj) => void;
@@ -12,6 +14,8 @@ export default function SearchBar(props: {
 }) {
   const [searchInput, setSearchInput] = useState("");
   const [cityOptions, setCityOptions] = useState<cityObj[]>([]);
+
+  const { isLightMode } = useContext(SettingsContext);
 
   const handleSearch = (cityToSearch: cityObj) => {
     props.setcurrentCity(cityToSearch);
@@ -52,14 +56,14 @@ export default function SearchBar(props: {
         type="text"
         id="fname"
         name="fname"
-        className={styles.inputText}
+        className={`${styles.inputText} ${isLightMode && styles.light}`}
         value={searchInput}
         onChange={(e) => handleChange(e.target.value)}
         autoComplete="off"></input>
       <button
         type="submit"
         value=""
-        className={styles.inputBtn}
+        className={`${styles.inputBtn} ${isLightMode && styles.light}`}
         onClick={() => handleSearch({ city: searchInput, country: "" })}>
         <SearchSvg />
       </button>
@@ -67,6 +71,7 @@ export default function SearchBar(props: {
         cityOptions={cityOptions}
         handleSearch={handleSearch}
       />
+      <SettingsButton />
     </div>
   );
 }

@@ -1,11 +1,15 @@
 import styles from "./TodayForecast.module.css";
 import { todayForecastData } from "../../assets/types";
+import { useContext } from "react";
+import { SettingsContext } from "../../assets/SettingsContext/settingsContext";
 
 export default function TodayForecast(props: {
   todayForecast: todayForecastData;
 }) {
+  const { isLightMode, defaultDegree } = useContext(SettingsContext);
+
   return (
-    <div className={styles.todayForecast}>
+    <div className={`${styles.todayForecast} ${isLightMode && styles.light}`}>
       <h3 className={styles.todayForecastHeader}>Today's forecast</h3>
       <ul className={styles.hourForecastList}>
         {[
@@ -16,14 +20,19 @@ export default function TodayForecast(props: {
           "6:00 PM",
           "12:00 PM",
         ].map((hour, index) => (
-          <div className={styles.hourForecast} key={index}>
+          <div
+            className={`${styles.hourForecast} ${isLightMode && styles.light}`}
+            key={index}>
             <h5>{hour}</h5>
             <img src={props.todayForecast.incons[index]} alt="weather icon" />
             <p>
               <span className={styles.hourTemp}>
-                {props.todayForecast.tempByHourC[index]}
+                {`${
+                  defaultDegree === "C"
+                    ? props.todayForecast.tempByHourC[index]
+                    : props.todayForecast.tempByHourF[index]
+                }° ${defaultDegree}`}
               </span>
-              °
             </p>
           </div>
         ))}

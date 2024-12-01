@@ -1,10 +1,5 @@
 import * as types from "./assets/types";
 
-type minMaxTemp = {
-  minTemp: number;
-  maxTemp: number;
-};
-
 export default async function createJson(cityName: string) {
   const cityData = await (
     await fetch(
@@ -13,15 +8,6 @@ export default async function createJson(cityName: string) {
   ).json();
 
   // current weather data
-  type currentWeatherData = {
-    cityObj: types.cityObj;
-    feelsLikeC: number;
-    feelsLikeF: number;
-    currTempC: number;
-    currTempF: number;
-    currentIcon: string;
-  };
-
   const feelsLikeC = cityData.current.feelslike_c;
   const feelsLikeF = cityData.current.feelslike_f;
   const currTempC = cityData.current.temp_c;
@@ -32,7 +18,7 @@ export default async function createJson(cityName: string) {
     country: cityData.location.country,
     url: undefined,
   };
-  const currentWeatherDataObj: currentWeatherData = {
+  const currentWeatherDataObj: types.currentWeatherData = {
     cityObj,
     feelsLikeC,
     feelsLikeF,
@@ -42,14 +28,8 @@ export default async function createJson(cityName: string) {
   };
 
   // 3 days forecast data
-  type forecastData = {
-    minMaxTempC: minMaxTemp[];
-    minMaxTempF: minMaxTemp[];
-    dates: string[];
-    icons: string[];
-  };
-  const minMaxTempC: minMaxTemp[] = [];
-  const minMaxTempF: minMaxTemp[] = [];
+  const minMaxTempC: types.minMaxTemp[] = [];
+  const minMaxTempF: types.minMaxTemp[] = [];
   const dates: string[] = [];
   const icons: string[] = [];
 
@@ -73,7 +53,7 @@ export default async function createJson(cityName: string) {
     icons.push(weekday.day.condition.icon);
   });
 
-  const forecastDataObj: forecastData = {
+  const forecastDataObj: types.forecastData = {
     minMaxTempC,
     minMaxTempF,
     dates,
@@ -81,11 +61,6 @@ export default async function createJson(cityName: string) {
   };
 
   // today forecast data
-  type todayForecastData = {
-    tempByHourC: number[];
-    tempByHourF: number[];
-    incons: string[];
-  };
   const tempByHourC = [];
   const tempByHourF = [];
   const incons = [];
@@ -97,22 +72,13 @@ export default async function createJson(cityName: string) {
     tempByHourF.push(tempf);
     incons.push(icon);
   }
-  const todayForecastDataObj: todayForecastData = {
+  const todayForecastDataObj: types.todayForecastData = {
     tempByHourC,
     tempByHourF,
     incons,
   };
 
   // info square data
-  type infoData = {
-    humidity: number;
-    windKph: number;
-    uv: number;
-    chanceOfRain: number;
-    sunrise: string;
-    sunset: string;
-    visibility: number;
-  };
   const humidity = cityData.current.humidity;
   const windKph = cityData.current.wind_kph;
   const uv = cityData.current.uv;
@@ -121,7 +87,7 @@ export default async function createJson(cityName: string) {
   const sunrise = cityData.forecast.forecastday[0].astro.sunrise;
   const sunset = cityData.forecast.forecastday[0].astro.sunset;
   const visibility = cityData.current.vis_km;
-  const infoDataObj: infoData = {
+  const infoDataObj: types.infoData = {
     humidity,
     windKph,
     uv,

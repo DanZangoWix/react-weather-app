@@ -13,6 +13,12 @@
   width: 40px;
 }
 
+.inputBtn.light,
+.inputText.light {
+  background-color: beige;
+  color: black;
+}
+
 .inputText {
   border: 0px;
   background-color: rgb(32, 43, 59);
@@ -30,4 +36,8 @@
 .searchBar svg {
   margin-bottom: -1px;
   width: 15px;
+}
+
+svg {
+  fill: gray;
 }

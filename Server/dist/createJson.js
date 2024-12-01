@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 export default function createJson(cityName) {
     return __awaiter(this, void 0, void 0, function* () {
         const cityData = yield (yield fetch(`http://api.weatherapi.com/v1/forecast.json?key=fe56794dc68c439dac4120220241111&q=${cityName}&days=7&aqi=no&alerts=no`)).json();
+        // current weather data
         const feelsLikeC = cityData.current.feelslike_c;
         const feelsLikeF = cityData.current.feelslike_f;
         const currTempC = cityData.current.temp_c;
@@ -28,6 +29,7 @@ export default function createJson(cityName) {
             currTempF,
             currentIcon,
         };
+        // 3 days forecast data
         const minMaxTempC = [];
         const minMaxTempF = [];
         const dates = [];
@@ -53,6 +55,7 @@ export default function createJson(cityName) {
             dates,
             icons,
         };
+        // today forecast data
         const tempByHourC = [];
         const tempByHourF = [];
         const incons = [];
@@ -69,6 +72,7 @@ export default function createJson(cityName) {
             tempByHourF,
             incons,
         };
+        // info square data
         const humidity = cityData.current.humidity;
         const windKph = cityData.current.wind_kph;
         const uv = cityData.current.uv;

@@ -1,18 +1,89 @@
 .settingsContainer {
-  position: absolute;
-  right: 10%;
-  top: 18%;
-  padding: 0.5% 1%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 1%;
   border-radius: 10px;
-  background-color: white;
+  margin-left: 5%;
 }
 
 .settingsIcon {
-  width: 90%;
+  width: 100%;
   transition: all 0.3s ease;
+  background-color: none;
+  border-radius: 5px;
 }
 
 .settingsIcon:hover {
   cursor: pointer;
   scale: 1.15;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5%;
+  left: 1.5%;
+  background-color: rgb(32, 43, 59);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+.settingsMenuContainer {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  right: 40%;
+  bottom: 50%;
+  background-color: white;
+  color: black;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 25%;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.settingsMenuContainer.shown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.settingsMenu {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+.settingsItem {
+  padding: 5% 0;
+  margin: 0 3%;
+  display: flex;
+  justify-content: center;
+}
+
+.settingsMenu .settingsItem:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+.saveBtn {
+  border: none;
+  background-color: rgb(32, 43, 59);
+  padding: 1% 2%;
+  color: white;
+  border-radius: 10px;
+}
+
+.saveBtn:hover {
+  cursor: pointer;
 }

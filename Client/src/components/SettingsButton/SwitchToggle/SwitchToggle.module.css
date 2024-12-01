@@ -1,0 +1,36 @@
+.switchToggle {
+  width: 0px;
+}
+
+.slider {
+  display: inline-block;
+  width: 45px;
+  background-color: rgb(173, 216, 212);
+  border-radius: 50% / 100%;
+  border: 2px solid black;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.slider,
+.slider::before {
+  transition: 0.4s;
+  height: 20px;
+}
+
+.switchToggle:checked + .slider::before {
+  transform: translateX(25px);
+}
+
+.switchToggle:checked + .slider {
+  background-color: rgb(11, 19, 30);
+  border-color: black;
+}
