@@ -5,5 +5,17 @@
     "url": ""
   },
   "defaultMode": "dark",
-  "defaultDegree": "F"
+  "defaultDegree": "F",
+  "defaultCityList": [
+    {
+      "city": "Tel Aviv-Yafo",
+      "country": "Israel",
+      "url": ""
+    },
+    {
+      "city": "Paris",
+      "country": "France",
+      "url": ""
+    }
+  ]
 }

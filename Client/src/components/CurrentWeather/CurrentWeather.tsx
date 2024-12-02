@@ -7,9 +7,11 @@ export default function CurrentWeather(props: {
   currentWeather: currentWeatherData;
 }) {
   const { defaultDegree } = useContext(SettingsContext);
-
+  const isDay =
+    Number(props.currentWeather.time) < 17 &&
+    Number(props.currentWeather.time) > 7;
   return (
-    <div className={styles.currentWeather}>
+    <div className={`${styles.currentWeather} ${isDay && styles.day}`}>
       <div className={styles.currentData}>
         <h1 className="currentCity">{props.currentWeather.cityObj.city}</h1>
         <p>

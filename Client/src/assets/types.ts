@@ -16,6 +16,7 @@ export type currentWeatherData = {
   currTempC: number;
   currTempF: number;
   currentIcon: string;
+  time: string;
 };
 
 export type forecastData = {
@@ -53,4 +54,5 @@ export type defaultSettings = {
   defaultCity: cityObj;
   defaultMode: string;
   defaultDegree: string;
+  // defaultCityList: cityObj[];
 };

@@ -28,9 +28,23 @@ function App() {
   const [defaultSettings, setDefaultSettings] = useState<types.defaultSettings>(
     initialDefaultSettings
   );
-  const [cityList, setCityList] = useState([
-    initialDefaultSettings.defaultCity,
-  ]);
+  const [cityList, setCityList] = useState(
+    initialDefaultSettings.defaultCityList
+  );
+
+  useEffect(() => {
+    localStorage.setItem(
+      "defaultSettings",
+      JSON.stringify({
+        ...defaultSettings,
+        defaultCityList: cityList,
+      })
+    );
+    if (cityList[0]) {
+      setcurrentCity(cityList[0]);
+    }
+  }, [cityList]);
+
   const [currentCity, setcurrentCity] = useState(
     initialDefaultSettings.defaultCity
   );
@@ -73,7 +87,7 @@ function App() {
           }}>
           <header className={styles.header}>
             <div className={styles.siteHeadline}>
-              <h1>Weather.com</h1>
+              <h2>Weather.com</h2>
             </div>
             <SearchBar
               setcurrentCity={setcurrentCity}
@@ -85,7 +99,11 @@ function App() {
             <Loading />
           ) : (
             <main className={styles.pageContent}>
-              <CityMenu cityList={cityList} setcurrentCity={setcurrentCity} />
+              <CityMenu
+                cityList={cityList}
+                setcurrentCity={setcurrentCity}
+                setCityList={setCityList}
+              />
               {weatherData && (
                 <>
                   <CurrentWeather

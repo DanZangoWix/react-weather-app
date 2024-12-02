@@ -11,7 +11,7 @@
 }
 
 .info:hover {
-  transform: scale(1.05);
+  transform: scale(0.98);
   background-color: beige;
   color: rgb(32, 43, 59);
 }

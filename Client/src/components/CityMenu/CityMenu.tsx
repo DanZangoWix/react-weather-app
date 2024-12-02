@@ -6,6 +6,7 @@ import { SettingsContext } from "../../assets/SettingsContext/settingsContext";
 export default function CityMenu(props: {
   setcurrentCity: (currentCity: cityObj) => void;
   cityList: cityObj[];
+  setCityList: React.Dispatch<React.SetStateAction<cityObj[]>>;
 }) {
   const handleClick = (chosenCity: cityObj) => {
     props.setcurrentCity(chosenCity);
@@ -19,7 +20,8 @@ export default function CityMenu(props: {
 
   const handleDelete = (e: MouseEvent<HTMLButtonElement>, index: number) => {
     e.preventDefault();
-    props.cityList.splice(index, 1);
+    const temp = props.cityList.filter((_, i) => i !== index);
+    props.setCityList(temp);
     setShowDelete(-1);
   };
 

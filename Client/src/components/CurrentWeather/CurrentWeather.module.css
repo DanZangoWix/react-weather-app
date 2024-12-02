@@ -11,6 +11,11 @@
   color: rgb(5, 2, 2);
 }
 
+.currentWeather.day {
+  background-image: url(./assets/sunny-background.jpg);
+  background-size: cover;
+}
+
 .currentData {
   display: flex;
   flex-direction: column;

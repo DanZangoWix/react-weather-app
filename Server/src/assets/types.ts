@@ -10,6 +10,7 @@ export type currentWeatherData = {
   currTempC: number;
   currTempF: number;
   currentIcon: string;
+  time: string;
 };
 
 export type forecastData = {

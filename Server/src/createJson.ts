@@ -13,6 +13,8 @@ export default async function createJson(cityName: string) {
   const currTempC = cityData.current.temp_c;
   const currTempF = cityData.current.temp_f;
   const currentIcon = cityData.current.condition.icon;
+  const time = cityData.location.localtime.split(" ")[1].substring(0, 2);
+
   const cityObj = {
     city: cityData.location.name,
     country: cityData.location.country,
@@ -25,6 +27,7 @@ export default async function createJson(cityName: string) {
     currTempC,
     currTempF,
     currentIcon,
+    time,
   };
 
   // 3 days forecast data
